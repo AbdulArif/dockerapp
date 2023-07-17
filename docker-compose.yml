@@ -1,0 +1,29 @@
+# version: '3.11.0'
+version: '3'
+
+services:
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver"
+    container_name: myapp
+    volumes:
+      - .:/myapp
+    # image: python-django:latest
+    ports:
+      - "8000:8000"
+
+
+# services:
+#   dockerapp:
+#     build:
+#       context: .
+#     ports:
+#       - 8000:8000
+#     command: >
+#       sh -c "python manage.py migrate &&
+#              python manage.py runserver"
+
+#     volumes:
+#       - ../dockerapp:/dockerapp
