@@ -1,11 +1,19 @@
+FROM python:3
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /app
+WORKDIR /app
+COPY requirements.txt /app/
+ENV HOST=0.0.0.0
+RUN pip install -r requirements.txt
+COPY . /app/
 # FROM python:3.11.0   
-FROM python:3.8-slim-buster 
-WORKDIR /django  
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-COPY . .
-EXPOSE 8000
-CMD python manage.py runserver
+# FROM python:3.8-slim-buster 
+# WORKDIR /django  
+# COPY requirements.txt requirements.txt
+# RUN pip3 install -r requirements.txt
+# COPY . .
+# EXPOSE 8000
+# CMD python manage.py runserver
 
 # ENV PYTHONUNBUFFERED=1
 
